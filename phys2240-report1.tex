@@ -1,0 +1,123 @@
+\documentclass[12pt,letterpaper,titlepage]{report}
+
+% packages
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{multirow}
+
+% commands
+
+\newcommand{\myTitle}{Series and Parallel Circuits}
+\newcommand{\myName}{Shawn Lutch}
+\newcommand{\myPeriod}{PHYS 2240.502}
+
+% metadata
+
+\usepackage[pdftex,
+			pdfauthor={\myName{}},
+			pdftitle={\myTitle{}},
+			pdfsubject={\myPeriod{}},
+			pdfproducer={\myName{} via LaTeX},
+			pdfcreator={pdflatex}]{hyperref}
+			
+% layout
+
+\pagenumbering{gobble}
+\raggedright
+\geometry{
+	letterpaper,
+	lmargin=0.75in,
+	rmargin=0.75in,
+	tmargin=1.0in,
+	bmargin=1.0in
+}
+
+% document
+
+\begin{document}
+
+
+%% title page
+
+
+\title{\myTitle{}}
+\author{\myName{}\\ \myPeriod{}}
+\date{\today}
+\maketitle
+
+
+%% abstract
+
+
+\section*{Abstract}
+
+
+%% introduction
+
+
+\section*{Introduction}
+
+
+%% apparatus
+
+
+\section*{Apparatus}
+
+
+%% procedure
+
+
+\section*{Procedure}
+
+
+%% data
+
+
+\section*{Data}
+
+
+\subsection*{Calibration}
+
+% resistor calibration
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Resistor Calibration} \label{tab:title}
+\input{tables/calibration/resistors}
+\end{minipage}
+
+\bigskip
+
+% ammeter calibration
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Ammeter Calibration} \label{tab:title}
+\input{tables/calibration/ammeter}
+\end{minipage}
+
+
+%% calcs and graphs
+
+
+\section*{Calculations}
+
+
+%% discussion
+
+
+\section*{Discussion}
+
+
+%% conclusion
+
+
+\section*{Conclusion}
+
+
+%% done...
+
+
+\end{document}
