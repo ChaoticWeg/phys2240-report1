@@ -8,6 +8,7 @@
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage{multirow}
+\usepackage{makecell}
 
 % commands
 
@@ -85,17 +86,27 @@
 % resistor calibration
 \begin{minipage}{\linewidth}
 \centering
-\captionof{table}{Resistor Calibration} \label{tab:title}
+\captionof{table}{Measured Resistance Values}
 \input{tables/calibration/resistors}
 \end{minipage}
 
+\bigskip
 \bigskip
 
 % ammeter calibration
 \begin{minipage}{\linewidth}
 \centering
-\captionof{table}{Ammeter Calibration} \label{tab:title}
+\captionof{table}{Ammeter Calibration Data}
 \input{tables/calibration/ammeter}
+\end{minipage}
+
+\bigskip
+\bigskip
+
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Resistance Summary}
+\input{tables/data/resistance}
 \end{minipage}
 
 
