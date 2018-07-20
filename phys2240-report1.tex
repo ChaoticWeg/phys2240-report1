@@ -9,12 +9,15 @@
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{makecell}
+\usepackage{circuitikz}
 
 % commands
 
 \newcommand{\myTitle}{Series and Parallel Circuits}
 \newcommand{\myName}{Shawn Lutch}
 \newcommand{\myPeriod}{PHYS 2240.502}
+
+\input{utils/setup_circuitikz} % allow rotation of elements in circuit diagram
 
 % metadata
 
@@ -96,7 +99,16 @@ Given that the resistors in the circuit diagrams are labeled $R_{1\ldots6}$, we 
 \end{minipage}
 \bigskip
 
-The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on each. In order to ensure the highest level of accuracy possible in our calculations for the equivalent resistance ($R_{eq}$) of each circuit, we first needed to find the actual resistance of our six resistors, as shown in Table 1. This method improves the precision of our values for $R_{1\ldots6}$ to around $\pm 1 \%$. These numbers would be used later in our calculations for the theoretical $R_{eq}$ of each circuit.
+The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on each. In order to ensure the highest level of accuracy possible in our calculations for the equivalent resistance ($R_{eq}$) of each circuit, we first needed to find the actual resistance of our six resistors, as shown in Table 1. These numbers would be used later in our calculations for the theoretical $R_{eq}$ of each circuit. The following circuit was used to calibrate each resistor $R_n$ by using PASCO Capstone to record the actual resistance to a precision of around $\pm 1 \%$:
+
+\bigskip
+\begin{minipage}{\linewidth}
+\centering
+\input{figures/circuits/calibration/resistors}
+\end{minipage}
+\bigskip
+
+
 
 %% data
 
