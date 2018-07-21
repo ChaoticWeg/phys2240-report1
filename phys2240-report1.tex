@@ -10,12 +10,14 @@
 \usepackage{multirow}
 \usepackage{makecell}
 \usepackage{circuitikz}
+\usepackage{pgfplots}
 
 % commands
 
 \newcommand{\myTitle}{Series and Parallel Circuits}
 \newcommand{\myName}{Shawn Lutch}
 \newcommand{\myPeriod}{PHYS 2240.502}
+\pgfplotsset{compat=1.12}
 
 \input{utils/setup_circuitikz} % allow rotation of elements in circuit diagram
 
@@ -59,11 +61,23 @@
 
 \section*{Abstract}
 
+TODO
+
 
 %% introduction
 
 \bigskip
 \section*{Introduction}
+
+We use Ohm's Law to describe the relationship between the voltage $V$, current $I$, and equivalent resistance $R$ in a circuit:
+
+$$V = IR$$
+
+Using an ammeter and a fixed voltage source, we are able to rearrange Ohm's Law in order to calculate the equivalent resistance of the circuit:
+
+$$R = \frac{V}{I}$$
+
+
 
 
 %% apparatus
@@ -138,7 +152,7 @@ The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on e
 
 \begin{minipage}{\linewidth}
 \centering
-\captionof{table}{Resistance Summary}
+\captionof{table}{Measured and Corrected Current}
 \input{tables/data/resistance}
 \end{minipage}
 
@@ -147,6 +161,21 @@ The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on e
 
 \bigskip
 \section*{Calculations and Graphs}
+
+\begin{minipage}{\linewidth}
+\centering
+\captionof{table}{Calculated Resistances}
+\input{tables/calculations/resistance}
+\end{minipage}
+
+\bigskip
+\bigskip
+
+\begin{minipage}{\linewidth}
+\centering
+\captionof{figure}{Resistance of Each Circuit}
+\input{figures/plots/resistance_histogram}
+\end{minipage}
 
 
 %% discussion
