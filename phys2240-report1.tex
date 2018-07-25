@@ -3,6 +3,7 @@
 % packages
 
 \usepackage[utf8]{inputenc}
+\usepackage[USenglish]{babel}
 \usepackage{mathptmx}
 \usepackage{amsmath}
 \usepackage{geometry}
@@ -62,7 +63,7 @@
 
 \section*{Abstract}
 
-In this lab, we found that we were able to calculate a theoretical $R_{eq}$ to within a precision of $\pm 10\%$. We calculated $R_{eq, 1}$ within a difference of 10.48\%, $R_{eq, 2}$ within a difference of 2.55\%, $R_{eq, 3}$ within a difference of 3.81\%, and $R_{eq, 4}$ within a difference of 4.42\%.
+In this lab, we were tasked with finding the equivalent resistance of four different circuits using Ohm's Law. We found that we were able to calculate a theoretical $R_{eq}$ to within  10.5\% of the measured $R_{eq}$. We calculated $R_{eq, 1}$ within a difference of 10.48\%, $R_{eq, 2}$ within a difference of 2.55\%, $R_{eq, 3}$ within a difference of 3.81\%, and $R_{eq, 4}$ within a difference of 4.42\%. These percent differences show that a small amount of systemic error affects our results.
 
 
 %% introduction
@@ -149,8 +150,8 @@ Below are the four circuits, as laid out in the lab manual.
     \input{figures/circuits/all_circuits}
     \bigskip
 \end{minipage}
+\bigskip
 
-\medskip
 We used equations \ref{req_series} and \ref{req_parallel} to calculate the theoretical $R_{eq}$ for each circuit. We found circuit 4 particularly troublesome, and it took some time to calculate its theoretical $R_{eq}$. Afterward, we built each of the circuits and measured the $I_{total}$ of each circuit with a constant $V_{total} =$ 15V DC. We used these values to calculate each circuit's experimental $R_{eq}$. We calculated the percent difference between theoretical and actual $R_{eq}$ values for each circuit and called it a day.
 
 \medskip
@@ -197,6 +198,8 @@ We also discussed the difference in current and voltage between circuits in seri
             \bigskip
         \end{minipage} \\
         
+        % current
+        
         \multicolumn{2}{c} {
             \begin{minipage}{.4\textwidth}
                 \centering
@@ -227,6 +230,8 @@ We also discussed the difference in current and voltage between circuits in seri
     
     \begin{tabular}{c c}
 
+        % calculated resistances
+        
         \begin{minipage}{.45\linewidth}
             \centering
             Calculated Resistances \\
@@ -243,6 +248,8 @@ We also discussed the difference in current and voltage between circuits in seri
             \bigskip
         \end{minipage} &
         
+        % pretty bar graph
+        
         \begin{minipage}{.5\linewidth}
             \centering
             \input{figures/plots/resistance_histogram}
@@ -251,14 +258,14 @@ We also discussed the difference in current and voltage between circuits in seri
     \end{tabular}    
 \end{minipage}
 
-\bigskip
-\bigskip
-
 
 %% discussion
 
-\bigskip
 \section*{Discussion of Results and Error Analysis}
+
+Initially, we had used the wrong values for $R_n$ in our theoretical $R_{eq}$ calculations: we used the ideal resistances listed for each resistor, rather than the actual values obtained through calibration. This inflated our percent differences and was troubling, until we realized our mistake and revised our calculations.
+
+\medskip
 
 % how well did the theoretical values compare to the experimental values?
 
@@ -268,13 +275,17 @@ In general, our calculated theoretical values were close to the measured experim
 
 % what are sources of error in this experiment, and how could they be minimized?
 
-Currently, it is not clear why our theoretical $R_{eq}$ varies so wildly from the experimental $R_{eq}$ in Circuit 1, although the main source of error throughout the entire experiment was electrical noise from the voltage source. Although we corrected for discrepancies in current, electrical noise is not uniform, and is difficult to predict and correct for.
+Currently, it is not clear why our theoretical $R_{eq}$ varies so wildly from the experimental $R_{eq}$ in Circuit 1, although the main source of error throughout the entire experiment was electrical noise from the voltage source. Although we corrected for discrepancies in current, electrical noise is not uniform, and is difficult to predict and correct for. In order to ensure the accuracy of our measured $R_{eq}$ for Circuit 1, it would be advantageous to re-run the experiment. The theoretical $R_{eq}$ was trivial to calculate since the circuit consisted of only two resistors in series, so it is odd that the measured $R_{eq}$ should be so much lower.
+
+\medskip
+It is possible that circuits were improperly built, though we built each circuit meticulously and ensured proper placement of resistors and patch cables.
 
 
 %% conclusion
 
-\bigskip
 \section*{Conclusion}
+
+The small differences in theoretical and measured $R_{eq}$ show that both methods are sufficiently accurate for finding the equivalent resistance of a circuit in a theory environment. Errors can be reduced by reducing electrical noise and ensuring that circuits are properly built.
 
 
 %% done...
