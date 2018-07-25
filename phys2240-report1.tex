@@ -4,6 +4,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{mathptmx}
+\usepackage{amsmath}
 \usepackage{geometry}
 \usepackage{float}
 \usepackage{subcaption}
@@ -11,6 +12,7 @@
 \usepackage{makecell}
 \usepackage{circuitikz}
 \usepackage{pgfplots}
+\usepackage{ctable}
 
 % commands
 
@@ -61,7 +63,7 @@
 
 \section*{Abstract}
 
-In this lab, we found that we were able to calculate a theoretical $R_{eq}$ to within a precision of $\pm 10\%$. We calculated the $R_{eq}$ of circuit 1 
+In this lab, we found that we were able to calculate a theoretical $R_{eq}$ to within a precision of $\pm 10\%$. We calculated $R_{eq, 1}$ within a difference of 10.48\%, $R_{eq, 2}$ within a difference of 2.55\%, $R_{eq, 3}$ within a difference of 3.81\%, and $R_{eq, 4}$ within a difference of 4.42\%.
 
 
 %% introduction
@@ -69,22 +71,43 @@ In this lab, we found that we were able to calculate a theoretical $R_{eq}$ to w
 \bigskip
 \section*{Introduction}
 
-We use Ohm's Law to describe the relationship between the voltage $V$, current $I$, and equivalent resistance $R_{eq}$ in a circuit:
+\textbf{Ohm's Law (equation \ref{ohms_law})} describes the relationship between voltage, current, and resistance. Ohm's Law defines a direct proportionality between current $I$ and voltage $V$, with a constant resistance $R$.
 
-$$V_{total} = I_{total} \times R_{eq}$$
+\begin{equation} \label{ohms_law}
+V = I \times R
+\end{equation}
 
-Using an ammeter and a fixed voltage source, we are able to rearrange Ohm's Law in order to calculate the equivalent resistance of the circuit:
+A \textbf{resistor} is a device that obeys Ohm's Law and has some resistance $R$. A complex circuit that contains multiple resistors, each with its own value for $R$, has some \textbf{equivalent resistor}. The equivalent resistor is a resistor that would produce the same total current when the same total voltage is applied. The resistance of the equivalent resistor is referred to as the \textbf{equivalent resistance} of the circuit, denoted $R_{eq}$.
 
-$$R_{eq} = \frac{ V_{total} }{ I_{total} }$$
+\medskip
+The equivalent resistor would obey Ohm's Law just as the actual resistors do. In a complex circuit that produces current $I_{total}$ when a voltage $V_{total}$ is applied, the equivalent resistance of the circuit can be calculated using a rearranged form of Ohm's Law. Using an ammeter and a fixed voltage source, we can use \textbf{equation \ref{ohms_law_rearranged}} to calculate the equivalent resistance of the circuit.
 
-In this lab, we demonstrate the ability to simplify complex circuits and calculate the $R_{eq}$ with known values for $V$ and $I$.
+\begin{equation} \label{ohms_law_rearranged}
+R_{eq} = \frac{ V_{total} }{ I_{total} }
+\end{equation}
 
+Without knowing the total voltage and total current of the circuit, we can still calculate the equivalent resistance of the circuit as long as we know the resistance of each resistor. We do this by performing calculations based on how the resistors are connected. For resistors connected in series, the resistances can simply be added together, as in \textbf{equation \ref{req_series}}. For resistors connected in parallel, we add the resistances as reciprocals, as in \textbf{equation \ref{req_parallel}}.
 
+\begin{equation} \label{req_series}
+R_{eq} = \sum_{i=1}^{n} R_{i}
+\end{equation}
+
+\begin{equation} \label{req_parallel}
+\frac{1}{R_{eq}} = \sum_{i=1}^{n} \frac{1}{R_i}
+\end{equation}
+
+\bigskip
+In this lab, we demonstrate the ability to calculate equivalent resistance using two methods:
+
+\begin{enumerate}
+    \item Using known values for $V_{total}$ and $I_{total}$ and equation \ref{ohms_law_rearranged}
+    \item Using known values for $R_{1 \ldots n}$ and equations \ref{req_series} and \ref{req_parallel}
+\end{enumerate}
 
 
 %% apparatus
 
-\bigskip
+\pagebreak
 \section*{Apparatus}
 
 \begin{itemize}
@@ -104,80 +127,133 @@ In this lab, we demonstrate the ability to simplify complex circuits and calcula
 %% procedure
 
 \bigskip
-\section*{Procedure}
+\section*{Experimental Procedure}
 
-Given that the resistors in the circuit diagrams are labeled $R_{1\ldots6}$, we first separated and labeled the resistors as instructed by the lab manual:
+The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on each. For maximum precision in our values for each circuit's $R_{eq}$, we first needed to find the actual resistance of our six resistors. These numbers would be used later in our calculations for the theoretical $R_{eq}$ of each circuit. The following circuit was used to calibrate each resistor $R_{1 \ldots 6}$ by using the PASCO Capstone software to record the actual resistance to a precision of around $\pm 1\%$.
+
+\begin{center}
+    \input{figures/circuits/calibration/resistors}
+\end{center}
+
+To account for electrical noise, which can cause error approaching 5 mA, we also calibrated the ammeter. We inserted the resistor with the closest resistance to $100 \Omega$ (which ended up being $R_4$) into the calibration circuit. Then, using the actual resistance value of $R_4$, we calculated the ideal current in a circuit powered by a range of DC voltages from 0V to 7V. We then measured and recorded the actual current of the circuit with each voltage, and notated a correction value that would be used later to account for electrical noise.
+
+\medskip
+The lab manual gave us four circuit diagrams, from which we were to build the circuits. The print was small and heavily compressed, so it was difficult to read the $R_n$ subscripts. We used the ideal resistance values given in the diagrams (not included in the reproductions on the next page) and process of elimination to figure out which resistor was supposed to be which.
+
+\pagebreak
+Below are the four circuits, as laid out in the lab manual.
 
 \bigskip
-\begin{minipage}{\linewidth}
-\centering
-\input{tables/resistor_numbers}
+\begin{minipage}{\textwidth}
+    \centering
+    \bigskip
+    \input{figures/circuits/all_circuits}
+    \bigskip
 \end{minipage}
-\bigskip
 
-The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on each. In order to ensure the highest level of accuracy possible in our calculations for the equivalent resistance ($R_{eq}$) of each circuit, we first needed to find the actual resistance of our six resistors, as shown in Table 1. These numbers would be used later in our calculations for the theoretical $R_{eq}$ of each circuit. The following circuit was used to calibrate each resistor $R_n$ by using PASCO Capstone to record the actual resistance to a precision of around $\pm 1 \%$:
+\medskip
+We used equations \ref{req_series} and \ref{req_parallel} to calculate the theoretical $R_{eq}$ for each circuit. We found circuit 4 particularly troublesome, and it took some time to calculate its theoretical $R_{eq}$. Afterward, we built each of the circuits and measured the $I_{total}$ of each circuit with a constant $V_{total} =$ 15V DC. We used these values to calculate each circuit's experimental $R_{eq}$. We calculated the percent difference between theoretical and actual $R_{eq}$ values for each circuit and called it a day.
 
-\bigskip
-\begin{minipage}{\linewidth}
-\centering
-\input{figures/circuits/calibration/resistors}
-\end{minipage}
-\bigskip
+\medskip
+We also discussed the difference in current and voltage between circuits in series and in parallel, as demonstrated with light bulbs. Those figures were not recorded and are not included in this lab report.
 
 
 
 %% data
 
-\bigskip
+\pagebreak
 \section*{Data}
 
+% more padding, sure fuck it
+\bigskip
+\bigskip
 
 % resistor calibration
-\begin{minipage}{\linewidth}
-\centering
-\captionof{table}{Measured Resistance Values}
-\input{tables/calibration/resistors}
+\begin{minipage}{\textwidth}
+    \centering
+    \begin{tabular}[t]{c c}
+        
+        % resistor calibration
+        \begin{minipage}{.4\textwidth}
+            \centering
+            \bigskip
+            Resistance Calibration \\
+            \bigskip
+            \input{tables/calibration/resistors}
+            \bigskip
+            \bigskip % fuck having to have these bigskips
+            \bigskip % but it's for the good of the formatting
+            \bigskip
+            \medskip % mix it up a bit, eh?
+        \end{minipage} &
+        
+        % ammeter calibration
+        \begin{minipage}{.4\textwidth}
+            \centering
+            \bigskip
+            Ammeter Calibration \\
+            \bigskip
+            \input{tables/calibration/ammeter}
+            \bigskip
+            \bigskip
+        \end{minipage} \\
+        
+        \multicolumn{2}{c} {
+            \begin{minipage}{.4\textwidth}
+                \centering
+                \bigskip
+                \bigskip
+                Measured and Corrected Current \\
+                \bigskip
+                \input{tables/data/current}
+                \bigskip
+            \end{minipage}
+        }
+                
+    \end{tabular}
 \end{minipage}
 
 \bigskip
 \bigskip
-
-% ammeter calibration
-\begin{minipage}{\linewidth}
-\centering
-\captionof{table}{Ammeter Calibration Data}
-\input{tables/calibration/ammeter}
-\end{minipage}
-
-\bigskip
-\bigskip
-
-\begin{minipage}{\linewidth}
-\centering
-\captionof{table}{Measured and Corrected Current}
-\input{tables/data/resistance}
-\end{minipage}
 
 
 %% calcs and graphs
 
-\bigskip
+\pagebreak
 \section*{Calculations and Graphs}
 
 \begin{minipage}{\linewidth}
-\centering
-\captionof{table}{Calculated Resistances}
-\input{tables/calculations/resistance}
+    \centering
+    \bigskip    
+    
+    \begin{tabular}{c c}
+
+        \begin{minipage}{.45\linewidth}
+            \centering
+            Calculated Resistances \\
+            \bigskip
+            \input{tables/calculations/resistance}
+            \bigskip
+            \bigskip % this
+            \bigskip % stupid
+            \bigskip % padding
+            \bigskip % bullshit
+            \bigskip % again
+            \bigskip
+            \medskip % lel
+            \bigskip
+        \end{minipage} &
+        
+        \begin{minipage}{.5\linewidth}
+            \centering
+            \input{figures/plots/resistance_histogram}
+        \end{minipage}
+
+    \end{tabular}    
 \end{minipage}
 
 \bigskip
 \bigskip
-
-\begin{minipage}{\linewidth}
-\centering
-\captionof{figure}{Resistance of Each Circuit}
-\input{figures/plots/resistance_histogram}
-\end{minipage}
 
 
 %% discussion
@@ -186,12 +262,14 @@ The precision of each resistor is $\pm 5 \%$, as indicated by the gold band on e
 \section*{Discussion of Results and Error Analysis}
 
 % how well did the theoretical values compare to the experimental values?
-In general, our calculated theoretical values were close to the measured experimental values within a reasonable margin of error. We found that we were able to calculate and predict $R_{eq}$ with around $\pm 5\%$ difference from the actual $R_{eq}$, with the exception of Circuit 1, which had a 10.48\% difference.
+
+In general, our calculated theoretical values were close to the measured experimental values within a reasonable margin of error. We found that we were able to calculate the theoretical $R_{eq}$ with around $\pm 5\%$ difference from the experimental $R_{eq}$, with the exception of Circuit 1, which had a 10.48\% difference between the two.
 
 \medskip
 
 % what are sources of error in this experiment, and how could they be minimized?
-Currently, it is not clear why our theoretical $R_{eq}$ varies so wildly from the experimental $R_{eq}$ in Circuit 1, although the main source of error throughout the entire experiment was electrical noise from the voltage source. Although we corrected for discrepancies in current (as shown in Table 2), electrical noise is not uniform, and is difficult to predict and correct for.
+
+Currently, it is not clear why our theoretical $R_{eq}$ varies so wildly from the experimental $R_{eq}$ in Circuit 1, although the main source of error throughout the entire experiment was electrical noise from the voltage source. Although we corrected for discrepancies in current, electrical noise is not uniform, and is difficult to predict and correct for.
 
 
 %% conclusion
