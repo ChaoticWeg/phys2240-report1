@@ -1,6 +1,12 @@
+# texmaker files
 *.aux
 *.log
 *.out
 *.gz
+
+# output
 *.pdf
+*.bbl
+*.blg
+*.dvi
 
