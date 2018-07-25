@@ -7,11 +7,12 @@
         ymax = 900,
         ymin = 0,
         minor y tick num = 3,
-        xlabel = {Circuit},
-        ylabel = {Resistance ($\Omega$)},
+        xlabel = { Circuit },
+        ylabel = { Resistance ($\Omega$) },
         ybar,
         legend cell align = left,
-        legend style = { draw = none }
+        legend style = { draw = none },
+        title = { Resistance of Each Circuit }
     ]
     
    	 	\addplot[
@@ -31,16 +32,16 @@
             draw = black
         ]
         table {
-            x  y      label
-            1  765.3  1
-            2  193.3  2
-            3  283.0  3
-            4  350.5  4
+            x  y
+            1  765.3
+            2  193.3
+            3  283.0
+            4  350.5
         };
         
         \legend {
-            Theoretical $R_{eq}$,
-            Experimental $R_{eq}$
+            Theor. $R_{eq}$,
+            Exper. $R_{eq}$
         }
         
     \end{axis}
